@@ -1,0 +1,23 @@
+{
+  "name": "crud-app",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "crud",
+    "postgres",
+    "pug",
+    "express"
+  ],
+  "author": "Eryk",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1",
+    "pg": "^7.11.0"
+  }
+}
