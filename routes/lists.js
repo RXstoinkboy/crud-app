@@ -1,7 +1,10 @@
 const router = require('express').Router();
+const queries = require('../config/queries');
 
-router.get('/', (req, res) => {
-    res.send(`This will show you all available lists`)
+const pool = require('../config/db');
+
+router.get('/:userID', (req, res) => {
+    queries.getAllLists(req, res);
 })
 
 module.exports = router;

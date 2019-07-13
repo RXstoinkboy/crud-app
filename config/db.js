@@ -1,8 +1,8 @@
-const Pool = require('pg').Pool;
+const { Pool } = require('pg');
 const pool = new Pool({
-    user: process.env.USER,
-    host: 'localhost',
-    port: 5432,
-    databese: process.env.DATABASE,
-    password: process.env.PASSWORD
+    connectionString: 'postgres://eryk:rxpostgres@localhost:5432/crud_app'
 });
+
+pool.on('connect', ()=> console.log(`db connected`));
+
+module.exports = pool;

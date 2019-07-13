@@ -9,7 +9,7 @@ POST    @   '/users/logout'         end session and logout
 PUT     @   '/users/:userID'        change user info (name / password)
 DELETE  @   '/users/:userID'        delete a user
     
-GET     @   '/lists'                show all lists for the user
+GET     @ X   '/lists/:userID'        show all lists for the user
 GET     @   '/lists/:listID'        show all tasks in current list
 POST    @   '/lists/'               create a new list
 POST    @   '/lists/:listID'        create a new task in a list
