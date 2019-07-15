@@ -1,4 +1,8 @@
 /* 
+
+X - done
+XC - done, but some changes needed
+
 DEFINE ROUTES FOR APP:
 GET     @   '/'                     show login page
 
@@ -9,11 +13,11 @@ POST    @   '/users/logout'         end session and logout
 PUT     @   '/users/:userID'        change user info (name / password)
 DELETE  @   '/users/:userID'        delete a user
     
-GET     @ X   '/lists/:userID'        show all lists for the user
-GET     @   '/lists/:listID'        show all tasks in current list
-POST    @   '/lists/'               create a new list
-POST    @   '/lists/:listID'        create a new task in a list
-PUT     @   '/lists/:listID'        change list name
+GET     @ X   '/lists/:userID/lists'   show all lists for the user
+GET     @ X  '/lists/:userID/:listID'  show all tasks in current list
+POST    @ XC  '/lists/:userID/:listName'   create a new list => SHOULD BE CHANGED TO TAKE TASK NAME FROM INPUT FIELD
+POST    @ XC  '/lists/:userID/:listID'        create a new task in a list => SHOULD TAKE TASK NAME FROM INPUT
+PUT     @ XC  '/lists/:userID/:listID/:newName'        change list name => SHOULD USE DATA FROM INPUT
 DELETE  @   '/lists/:listID'        delete a list with all tasks inside
 
 GET     @   '/tasks/:taskID'        show task info => NOT SURE IF NEED / MIGHT DELETE IT

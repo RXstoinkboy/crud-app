@@ -1,10 +1,24 @@
 const router = require('express').Router();
 const queries = require('../config/queries');
 
-const pool = require('../config/db');
-
-router.get('/:userID', (req, res) => {
+router.get('/:userID/lists', (req, res) => {
     queries.getAllLists(req, res);
+})
+
+router.get('/:userID/:listID', (req, res) => {
+    queries.showCurrentTasks(req, res);
+})
+
+router.post('/:userID/:listName', (req, res) => {
+    queries.createNewList(req, res);
+})
+
+router.post('/:userID/:listID/:task', (req, res) => {
+    queries.createNewTask(req, res);
+})
+
+router.put('/:userID/:listID/:newName', (req, res) => {
+    queries.changeListName(req, res);
 })
 
 module.exports = router;
