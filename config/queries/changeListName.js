@@ -3,7 +3,7 @@ const db = require('../db');
 const query = `
     UPDATE lists
     SET list_name = $3
-    WHERE id = $2 AND user_id = $1;
+    WHERE id = $2 AND user_id = $1
 `
 
 const changeListName = (req, res) => {

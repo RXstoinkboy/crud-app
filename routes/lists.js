@@ -21,4 +21,8 @@ router.put('/:userID/:listID/:newName', (req, res) => {
     queries.changeListName(req, res);
 })
 
+router.delete('/:listID', (req, res) => {
+    queries.deleteList(req, res);
+})
+
 module.exports = router;

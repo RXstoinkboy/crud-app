@@ -18,10 +18,10 @@ GET     @ X  '/lists/:userID/:listID'  show all tasks in current list
 POST    @ XC  '/lists/:userID/:listName'   create a new list => SHOULD BE CHANGED TO TAKE TASK NAME FROM INPUT FIELD
 POST    @ XC  '/lists/:userID/:listID'        create a new task in a list => SHOULD TAKE TASK NAME FROM INPUT
 PUT     @ XC  '/lists/:userID/:listID/:newName'        change list name => SHOULD USE DATA FROM INPUT
-DELETE  @   '/lists/:listID'        delete a list with all tasks inside
+DELETE  @ X  '/lists/:listID'        delete a list with all tasks inside
 
-GET     @   '/tasks/:taskID'        show task info => NOT SURE IF NEED / MIGHT DELETE IT
-PUT     @   '/tasks/:taskID'        change text in the task
+GET     @ X   '/tasks/:taskID'        show task info => NOT SURE IF NEED / MIGHT DELETE IT
+PUT     @ XC  '/tasks/:taskID/:taskUpdate'        change text in the task => TAKE NEW TASK TEXT FROM INPUT
 PUT     @   '/tasks/:taskID/status  toggle task status (active?) between TRUE/FALSE
 PUT     @   '/tasks/:taskID/:listID move a task to a different list
 DELETE  @   '/tasks/:taskID'        delete a task    
