@@ -10,6 +10,8 @@ const deleteList = require('./queries/deleteList');
 const showTaskInfo = require('./queries/showTaskInfo');
 const changeTask = require('./queries/changeTask');
 const toggleTaskStatus = require('./queries/toggleTaskStatus');
+const switchList = require('./queries/switchList');
+const deleteTask = require('./queries/deleteTask');
 
 module.exports = {
     getAllLists,
@@ -21,5 +23,7 @@ module.exports = {
 
     showTaskInfo,
     changeTask,
-    toggleTaskStatus
+    toggleTaskStatus,
+    switchList,
+    deleteTask
 };

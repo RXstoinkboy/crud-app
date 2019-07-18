@@ -3,7 +3,7 @@ const db = require('../db');
 const query = `
     UPDATE tasks
         SET active = NOT active
-        WHERE id = $1
+        WHERE id = $1;
 `;
 
 const toggleTaskStatus = (req, res) => {
