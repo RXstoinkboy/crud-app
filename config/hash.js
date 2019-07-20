@@ -8,7 +8,7 @@ const createSalt = (length = 16) => {
 
 // apply hashing algorithm to password
 // export it in order to validate password when logging in
-const createHashedPassword = (password = 'password', salt = createSalt()) => {
+const createHashedPassword = (password = 'password', salt) => {
     const hash = crypto.createHmac('sha512', salt); // hashing algorithm
     hash.update(password);
     const hash_password = hash.digest('hex');
@@ -22,13 +22,12 @@ const createHashedPassword = (password = 'password', salt = createSalt()) => {
 const hashPassword = (password) => {
     const salt = createSalt(16); // create salt of 16 which is also default and usually should be enough
     const passwordData = createHashedPassword(password, salt); // return hashed password and random salt
+
     return {
-        hash_password: passwordData.hash_password,
-        salt: passwordData.salt
+        salt: passwordData.salt,
+        hash_password: passwordData.hash_password
     }
 };
-
-console.log(hashPassword('hellopassword'));
 
 module.exports = {
     hashPassword,

@@ -8,6 +8,8 @@ const port = process.env.PORT || 8080;
 // set tamplate enging to PUG
 app.set('view engine', 'pug');
 
+app.use(express.urlencoded({extended: true}));
+
 // apply router middleware
 app.use('/users', router.users);
 app.use('/tasks', router.tasks);

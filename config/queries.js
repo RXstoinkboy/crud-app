@@ -13,6 +13,9 @@ const toggleTaskStatus = require('./queries/toggleTaskStatus');
 const switchList = require('./queries/switchList');
 const deleteTask = require('./queries/deleteTask');
 
+// USERS
+const createNewUser = require('./queries/createNewUser');
+
 module.exports = {
     getAllLists,
     showCurrentTasks,
@@ -25,5 +28,7 @@ module.exports = {
     changeTask,
     toggleTaskStatus,
     switchList,
-    deleteTask
+    deleteTask,
+
+    createNewUser
 };
