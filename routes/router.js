@@ -6,7 +6,7 @@ XC - done, but some changes needed
 DEFINE ROUTES FOR APP:
 GET     @   '/'                     show main page => LOGIN PAGE if not logged in
 
-POST    @   '/users'                create new user
+POST    @ X  '/users'                create new user
 GET     @   '/users/:userID'        get user data
 PUT     @   '/users/:userID'        change user data (name / password)
 DELETE  @   '/users/:userID'        delete a user

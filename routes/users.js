@@ -8,9 +8,6 @@ router.get('/:userID', (req, res) => {
 
 router.post('/', (req, res) => {
     queries.createNewUser(req, res);
-    // res.send(req.body.username, req.body.password);
-    // console.log(req.body.username);
-    // res.send(`User ${req.body.username} was successfully created!`)
 })
 
 module.exports = router;
