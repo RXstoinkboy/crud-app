@@ -17,4 +17,9 @@ app.get('/', (req, res) => {
     res.send('Hello world!');
 })
 
+// UPDATE IT TO SHOW 404 PAGE
+app.get('*', (req, res) => {
+    res.status(404).send(`Sorry, there is no such directory`);
+})
+
 app.listen(port, () => console.log(`Server running on port: ${port}`));

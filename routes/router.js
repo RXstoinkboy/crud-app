@@ -4,14 +4,14 @@ X - done
 XC - done, but some changes needed
 
 DEFINE ROUTES FOR APP:
-GET     @   '/'                     show login page
+GET     @   '/'                     show main page => LOGIN PAGE if not logged in
 
-GET     @   '/users/:userID'        get user data
 POST    @   '/users'                create new user
+GET     @   '/users/:userID'        get user data
+PUT     @   '/users/:userID'        change user data (name / password)
+DELETE  @   '/users/:userID'        delete a user
 POST    @   '/users/login'          try to login
 POST    @   '/users/logout'         end session and logout
-PUT     @   '/users/:userID'        change user info (name / password)
-DELETE  @   '/users/:userID'        delete a user
     
 GET     @ X   '/lists/allLists/:userID'   show all lists for the user
 GET     @ X  '/lists/singleList/:userID/:listID'  show all tasks in current list
