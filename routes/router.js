@@ -7,10 +7,10 @@ DEFINE ROUTES FOR APP:
 GET     @   '/'                     show main page => LOGIN PAGE if not logged in
 
 POST    @ X  '/users'                create new user
-GET     @   '/users/:userID'        get user data
-PUT     @   '/users/:userID'        change user data (name / password)
+GET     @ X  '/users/:username'        get user data
+PUT     @ XC '/users/:userID'        change user data (name / password)
 DELETE  @   '/users/:userID'        delete a user
-POST    @   '/users/login'          try to login
+POST    @ X  '/users/login'          try to login
 POST    @   '/users/logout'         end session and logout
     
 GET     @ X   '/lists/allLists/:userID'   show all lists for the user

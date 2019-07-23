@@ -15,6 +15,10 @@ const deleteTask = require('./queries/deleteTask');
 
 // USERS
 const createNewUser = require('./queries/createNewUser');
+const getUserInfo = require('./queries/getUserInfo');
+const changeUserData = require('./queries/changeUserData');
+const login = require('./queries/login');
+const logout = require('./queries/logout');
 
 module.exports = {
     getAllLists,
@@ -30,5 +34,9 @@ module.exports = {
     switchList,
     deleteTask,
 
-    createNewUser
+    createNewUser,
+    getUserInfo,
+    changeUserData,
+    login,
+    logout
 };

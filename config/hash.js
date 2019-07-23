@@ -8,7 +8,7 @@ const createSalt = (length = 16) => {
 
 // apply hashing algorithm to password
 // export it in order to validate password when logging in
-const createHashedPassword = (password = 'password', salt) => {
+const createHashedPassword = (password, salt) => {
     const hash = crypto.createHmac('sha512', salt); // hashing algorithm
     hash.update(password);
     const hash_password = hash.digest('hex');

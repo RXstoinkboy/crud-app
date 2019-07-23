@@ -12,8 +12,6 @@ const doesUserExist = `
 `;
 
 const createNewUser = (req, res) => {
-    // if username and apssword are empty then return a request to provide correct data
-    // if (req.body.username === '' || req.body.password === ''){
     const passwordRegex = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}');
     const userRegex = new RegExp('(?=[A-Za-z0-9]).{3,}');
 
