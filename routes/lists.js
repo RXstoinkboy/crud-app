@@ -1,23 +1,24 @@
 const router = require('express').Router();
 const queries = require('../config/queries');
+const auth = require('../middlewares/auth');
 
-router.get('/allLists/:userID', (req, res) => {
+router.get('/allLists/:userID', auth, (req, res) => {
     queries.getAllLists(req, res);
 })
 
-router.get('/singleList/:userID/:listID', (req, res) => {
+router.get('/singleList/:userID/:listID', auth, (req, res) => {
     queries.showCurrentTasks(req, res);
 })
 
-router.post('/createList/:userID/:listName', (req, res) => {
+router.post('/createList/:userID/:listName', auth, (req, res) => {
     queries.createNewList(req, res);
 })
 
-router.put('/changeListName/:userID/:listID/:newName', (req, res) => {
+router.put('/changeListName/:userID/:listID/:newName', auth, (req, res) => {
     queries.changeListName(req, res);
 })
 
-router.delete('/delete/:listID', (req, res) => {
+router.delete('/delete/:listID', auth, (req, res) => {
     queries.deleteList(req, res);
 })
 

@@ -7,7 +7,7 @@ const getUserInfo = `
         WHERE username = $1
 `;
 
-const assingToken = `
+const assignToken = `
     UPDATE users
         SET token = $1
             WHERE username = $2
@@ -23,7 +23,7 @@ const login = (req, res) => {
         if (results.rows.length === 0) return res.send('User not found');
 
         const hash = createHashedPassword(req.body.password, results.rows[0].salt);
-        // get salt and hash_password from data base
+        // get salt and hash_password from database
         // hash password provided by user and compare result with data stored in DB
         if (
             hash.hash_password === results.rows[0].hash_password 
@@ -33,7 +33,7 @@ const login = (req, res) => {
             const token = jwt.sign(results.rows[0], process.env.JWT_SECRET);
             
             // save token in DB
-            db.query(assingToken, [token, req.body.username], (err, results) => {
+            db.query(assignToken, [token, req.body.username], (err, results) => {
                 res.cookie('login_token', token).send('ok');
                 // I think I can also show some nice website :D
             })

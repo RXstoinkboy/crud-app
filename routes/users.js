@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const queries = require('../config/queries');
+const auth = require('../middlewares/auth');
 
-router.get('/:username', (req, res) => {
+router.get('/:username', auth, (req, res) => {
     queries.getUserInfo(req, res);
 })
 
@@ -11,6 +12,10 @@ router.post('/', (req, res) => {
 
 router.post('/login', (req, res) => {
     queries.login(req, res);
+})
+
+router.post('/logout', (req, res) => {
+    queries.logout(req, res);
 })
 
 // HAVE TO GET MORE DATA FOR THAT LATER
