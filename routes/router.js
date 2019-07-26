@@ -8,10 +8,10 @@ GET     @   '/'                     show main page => LOGIN PAGE if not logged i
 
 POST    @ X  '/users'                create new user
 GET     @ X  '/users/:username'        get user data
-PUT     @ XC '/users/:userID'        change user data (name / password)
+POST   @ XC '/users/:userID'        change user data (name / password)
 DELETE  @   '/users/:userID'        delete a user
 POST    @ X  '/users/login'          try to login
-POST    @   '/users/logout'         end session and logout
+POST    @ X  '/users/logout'         end session and logout
     
 GET     @ X   '/lists/allLists/:userID'   show all lists for the user
 GET     @ X  '/lists/singleList/:userID/:listID'  show all tasks in current list

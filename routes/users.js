@@ -18,6 +18,10 @@ router.post('/logout', (req, res) => {
     queries.logout(req, res);
 })
 
+router.post('/changePassword', (req, res) => {
+    queries.changePassword(req, res);
+})
+
 // HAVE TO GET MORE DATA FOR THAT LATER
 // 1. CHANGE USER DATA ONLY IF USER IS LOGGED IN
 // 2. COMPARE USER HASH PASSWORDS

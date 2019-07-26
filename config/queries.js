@@ -16,7 +16,7 @@ const deleteTask = require('./queries/deleteTask');
 // USERS
 const createNewUser = require('./queries/createNewUser');
 const getUserInfo = require('./queries/getUserInfo');
-const changeUserData = require('./queries/changeUserData');
+const changePassword = require('./queries/changePassword');
 const login = require('./queries/login');
 const logout = require('./queries/logout');
 
@@ -36,7 +36,7 @@ module.exports = {
 
     createNewUser,
     getUserInfo,
-    changeUserData,
+    changePassword,
     login,
     logout
 };
