@@ -8,7 +8,7 @@ GET     @   '/'                     show main page => LOGIN PAGE if not logged i
 
 POST    @ X  '/users'                create new user
 GET     @ X  '/users/:username'        get user data
-POST   @ XC '/users/:userID'        change user data (name / password)
+PATCH   @ X '/users/changePassword'        change user password
 DELETE  @   '/users/:userID'        delete a user
 POST    @ X  '/users/login'          try to login
 POST    @ X  '/users/logout'         end session and logout

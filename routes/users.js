@@ -18,7 +18,7 @@ router.post('/logout', (req, res) => {
     queries.logout(req, res);
 })
 
-router.post('/changePassword', (req, res) => {
+router.patch('/changePassword', (req, res) => {
     queries.changePassword(req, res);
 })
 

@@ -33,8 +33,8 @@ const login = (req, res) => {
             const token = jwt.sign(results.rows[0], process.env.JWT_SECRET);
             
             // save token in DB
-            db.query(assignToken, [token, req.body.username], (err, results) => {
-                res.cookie('login_token', token).send('ok');
+            db.query(assignToken, [token, req.body.username], (err, resp) => {
+                res.cookie('login_token', token).send('Successfully logged in');
                 // I think I can also show some nice website :D
             })
 

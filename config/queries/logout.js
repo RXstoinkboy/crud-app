@@ -14,12 +14,10 @@ const findUserQuery = `
 const logout = (req, res) => {
     const token = req.cookies.login_token;
 
-    if(!token) return res.redirect('/');
-
     return db.query(findUserQuery, [token], (err, results) => {
-        const userID = results.rows[0].id;
+        const username = results.rows[0].username;
         
-        return db.query(logoutQuery, [userID], (err, results) => {
+        return db.query(logoutQuery, [username], (err, results) => {
             
             res.clearCookie('login_token').redirect('/')
         })

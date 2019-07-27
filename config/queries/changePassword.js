@@ -4,11 +4,11 @@ const {createHashedPassword, hashPassword} = require('../../config/hash');
 const changePasswordQuery = `
     UPDATE users
         SET hash_password = $2,
-        SET salt = $3
-            WHERE username = $1
+            salt = $3
+                WHERE username = $1
 `;
 
-const verifyPassword = `
+const getUserInfo = `
     SELECT * FROM users
         WHERE username = $1
 `;
@@ -18,31 +18,44 @@ const verifyPassword = `
 
 const changePassword = (req, res) => {
     const passwordRegex = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}');
+    
+    return db.query(getUserInfo, [req.body.username], (userErr, user) => {
+        if(userErr) return res.json(userErr);
+        // get hash and salt from database for a tested user
+        const {hash_password: hashFromDB, salt: saltFromDB} = user.rows[0];
 
-    db.query(verifyPassword, [req.body.username], (err, results) => {
-        // hash and salt from DB
-        const {hash_password: old_hash_password, salt: old_salt} = results.rows[0];
-        // hash generated based on provided password and salt from DB
-        const verification_password = createHashedPassword(req.body.password, old_salt);
+        // take salt from DB and use it to create a hashed password for data verification
+        const {hash_password: hashToVerify, salt} = createHashedPassword(req.body.password, saltFromDB);
         
-        if(!passwordRegex.test(req.body.new_password)) return res.status(403).send(`New password is in the wrong format.`);
-        // compare verification hash to old hash from DB & check if new password is in the right format
-        if((verification_password.hash_password === old_hash_password) && passwordRegex.test(req.body.new_password)){
-            // generate new hash and new salt based on new provided password
-            const {hash_password, salt} = hashPassword(req.body.new_password);
-
-            // console.log(req.body.new_password, salt, hash_password);
-
-            return db.query(changePasswordQuery, [req.body.username, hash_password, salt], (error, response) => {
-                console.log(req.body.username, hash_password, salt);
-                res.status(200).send(`Password successfully updated.`)
-            })
+        // if provided password matches the one which is in db then update data
+        if(hashFromDB === hashToVerify){
+            // if new password matches regex then update data
+            if(passwordRegex.test(req.body.new_password)){
+                const {hash_password: newHashPassword, salt: newSalt} = hashPassword(req.body.new_password);
+                console.log(`new password: ${req.body.new_password}, new hash: ${newHashPassword}, new salt: ${newSalt}`);
+                
+                return db.query(changePasswordQuery, [req.body.username, newHashPassword, newSalt], (updateErr, updateRes) => {
+                    if(updateErr){
+                        return res.json(updateErr);
+                    } else {
+                        console.log(`password updated`);
+                        return res.json(updateRes);
+                    }
+                })
+                // res.json(`Password updated successfully!`);
+            // if new password didn't match regex then request for correct format
+            } else {
+                res.json(
+                    {
+                        message:`New password was in wrong format`, 
+                        format: `Password has to contain 6 or more characters, one or more capital letters, one or more numbers, one or more lowercase latters...`
+                    });
+            }
+            // res.json({hashToVerify, hashFromDB, saltFromDB});
         } else {
-            return res.status(403).send(`Sorry, provided password was incorrect.`)
+            console.log(`hashFromDB: ${hashFromDB}, hashToVerify: ${hashToVerify}, saltFromDB: ${saltFromDB}`);
+            return res.json(`Sorry, provided password is incorrect...`)
         }
-
-
-        
     })
 };
 
