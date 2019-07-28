@@ -7,7 +7,7 @@ const query = `
 `;
 
 const changeTask = (req, res) => {
-    return db.query(query, [req.params.taskID, req.params.taskUpdate], (err, results) => {
+    return db.query(query, [req.params.taskID, req.body.new_task_name], (err, results) => {
         res.status(200).send(`Task with id: ${req.params.taskID} was updated to ${req.params.taskUpdate}`);
     })
 };

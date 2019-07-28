@@ -6,7 +6,7 @@ const query = `
 `
 
 const createNewTask = (req, res) => {
-    return db.query(query, [req.params.userID, req.params.listID, req.params.task], (err, results) => {
+    return db.query(query, [req.params.userID, req.params.listID, req.body.task], (err, results) => {
         res.status(200).send(`Task: ${req.params.task} succesfully created !`);
     })
 };

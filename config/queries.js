@@ -19,6 +19,7 @@ const getUserInfo = require('./queries/getUserInfo');
 const changePassword = require('./queries/changePassword');
 const login = require('./queries/login');
 const logout = require('./queries/logout');
+const deleteUser = require('./queries/deleteUser');
 
 module.exports = {
     getAllLists,
@@ -38,5 +39,6 @@ module.exports = {
     getUserInfo,
     changePassword,
     login,
-    logout
+    logout,
+    deleteUser
 };

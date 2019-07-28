@@ -6,7 +6,7 @@ router.get('/:taskID', auth, (req, res) => {
    queries.showTaskInfo(req, res);
 });
 
-router.put('/update/:taskID/:taskUpdate', auth, (req, res) => {
+router.put('/update/:taskID', auth, (req, res) => {
     queries.changeTask(req, res);
 });
 
@@ -14,7 +14,7 @@ router.put('/status/:taskID', auth, (req, res) => {
     queries.toggleTaskStatus(req, res);
 })
 
-router.post('/createTask/:userID/:listID/:task', auth,(req, res) => {
+router.post('/createTask/:userID/:listID', auth,(req, res) => {
     queries.createNewTask(req, res);
 })
 

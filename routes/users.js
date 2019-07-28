@@ -18,15 +18,12 @@ router.post('/logout', (req, res) => {
     queries.logout(req, res);
 })
 
-router.patch('/changePassword', (req, res) => {
+router.patch('/changePassword', auth, (req, res) => {
     queries.changePassword(req, res);
 })
 
-// HAVE TO GET MORE DATA FOR THAT LATER
-// 1. CHANGE USER DATA ONLY IF USER IS LOGGED IN
-// 2. COMPARE USER HASH PASSWORDS
-// router.put('/', (req, res) => {
-//     queries.changeUserData(req, res);
-// })
+router.delete('/', auth, (req, res) => {
+    queries.deleteUser(req, res);
+})
 
 module.exports = router;

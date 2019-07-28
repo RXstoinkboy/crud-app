@@ -14,7 +14,7 @@ router.post('/createList/:userID/:listName', auth, (req, res) => {
     queries.createNewList(req, res);
 })
 
-router.put('/changeListName/:userID/:listID/:newName', auth, (req, res) => {
+router.put('/changeListName/:userID/:listID', auth, (req, res) => {
     queries.changeListName(req, res);
 })
 
