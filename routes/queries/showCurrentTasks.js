@@ -1,8 +1,8 @@
-const db = require('../db');
+const db = require('../../config/db');
 
 const query = `
         SELECT * FROM tasks
-        WHERE list_id = $1 and user_id = $2
+            WHERE list_id = $1 AND user_id = $2
     `;
 const showCurrentTasks = (req, res) => {
     return db.query(query, [req.params.listID], (err,results) => {

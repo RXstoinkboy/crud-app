@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const queries = require('../config/queries');
+const queries = require('./queries');
 const auth = require('../middlewares/auth');
 
 router.get('/:username', auth, (req, res) => {

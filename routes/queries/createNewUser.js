@@ -1,5 +1,5 @@
-const db = require('../db');
-const hash = require('../hash');
+const db = require('../../config/db');
+const hash = require('../../config/hash');
 
 const query = `
     INSERT INTO users (username, hash_password, salt) 
@@ -16,7 +16,7 @@ const createNewUser = (req, res) => {
     const userRegex = new RegExp('(?=[A-Za-z0-9]).{3,}');
 
     if (!userRegex.test(req.body.username) || !passwordRegex.test(req.body.password)){
-        res.send(`Please provide correct username and password...`);
+        res.status(400).send(`Please provide correct username and password...`);
         return 
     } 
 
@@ -32,6 +32,7 @@ const createNewUser = (req, res) => {
         // and if USERNAME has not been taken already
         return db.query(query, [req.body.username, passwordData.hash_password, passwordData.salt], (err, results) => {
             res.status(200).send(`User ${req.body.username} was successfully created!`)
+            // maybe it should redirect to LOGIN?
         })
     })
 };

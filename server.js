@@ -19,7 +19,7 @@ app.use('/tasks', router.tasks);
 app.use('/lists', router.lists);
 
 app.get('/', auth, (req, res) => {
-    res.send('Hello world!');
+    res.status(200).send('Hello world!');
 })
 
 // UPDATE IT TO SHOW 404 PAGE
@@ -28,3 +28,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(port, () => console.log(`Server running on port: ${port}`));
+
+module.exports = app;

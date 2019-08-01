@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../../config/db');
 const {createHashedPassword, hashPassword} = require('../../config/hash');
 
 const changePasswordQuery = `

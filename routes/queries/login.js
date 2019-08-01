@@ -1,5 +1,5 @@
-const db = require('../db');
-const createHashedPassword = require('../hash').createHashedPassword;
+const db = require('../../config/db');
+const createHashedPassword = require('../../config/hash').createHashedPassword;
 const jwt = require('jsonwebtoken');
 
 const getUserInfo = `
