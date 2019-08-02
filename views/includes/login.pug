@@ -1,0 +1,13 @@
+.wrapper
+	form.reg(method='POST', action='#')
+		.fieldset
+			input#name(type='text' name='name' pattern='.{3,}' minlength='3' maxlength='32' required)
+			span.underline
+			label(for='name') Name
+			span.validation Please enter correct name
+		.fieldset
+			input#password(type='password' name='password' pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,})" required)
+			span.underline
+			label(for='password') Password 
+			span.validation Please enter correct password
+		button(type='submit') register

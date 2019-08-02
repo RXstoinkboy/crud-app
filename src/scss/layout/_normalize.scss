@@ -1,0 +1,25 @@
+html{
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-size: 1rem;
+    text-align: center;
+}
+
+*, *::before, *::after{
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+input{
+    border: none;
+}
