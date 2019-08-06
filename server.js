@@ -1,14 +1,32 @@
 require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const router = require('./routes/router');
 const auth = require('./middlewares/auth');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
-const fs = require('fs');
-const sass = require('node-sass');
+
+// const webpack = require('webpack');
+// const webpackDevMiddleware = require('webpack-dev-middleware');
+// const webpackHotMiddleware = require('webpack-hot-middleware');
+// const config = require('./webpack.config');
 
 const port = process.env.PORT || 8080;
+
+// const devServerEnabled = true;
+
+// if(devServerEnabled){
+//     config.entry.app.unshift('webpack-hot-middleware/client?reload=true&timeout=1000');
+//     config.plugins.push(new webpack.HotModuleReplacementPlugin());
+//     const compiler = webpack(config);
+
+//     app.use(webpackDevMiddleware(compiler, {
+//         publicPath: config.output.publicPath
+//     }))
+
+//     app.use(webpackHotMiddleware(compiler));
+// }
 
 // set tamplate enging to PUG
 app.set('view engine', 'pug');
@@ -18,27 +36,13 @@ app.use(express.urlencoded({extended: true}));
 app.use(compression());
 app.use(express.static('public'));
 
-sass.render({
-    file: './src/scss/style.scss',
-    outFile: './public/css/style.css',
-    outputStyle: 'compressed',
-    sourceMap: true
-  }, function(err, result) {
-      if(!err){
-          fs.writeFile('./public/css/style.css', result.css, (err, result)=>{
-              if(!err){
-                  console.log(result)
-              }
-          })
-      }
-  });
-
-// apply router middleware
+// API
 app.use('/users', router.users);
 app.use('/tasks', router.tasks);
 app.use('/lists', router.lists);
 
 app.get('/', (req, res) => {
+    // console.log(`config:`, config.output.publicPath)
     res.render('home')
     // res.status(200);
 })

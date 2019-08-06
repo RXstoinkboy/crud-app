@@ -1,113 +1,118 @@
-@import './layout/normalize'
+@import './layout/normalize';
+@import './partials/home';
 
-$colors: ('darkblue': hsl(200deg, 40%, 50%), 'lightblue': hsl(190deg, 50%, 50%), 'darkblue-hover': hsl(200deg, 40%, 60%), 'lightblue-hover': hsl(190deg, 50%, 60%));
-
-.wrapper{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100vw;
-	height: 100vh;
+body{
+    background: blue;
 }
 
-.reg{
-	display: flex;
-	flex-direction: column;
-	color: grey;
-}
+// $colors: ('darkblue': hsl(200deg, 40%, 50%), 'lightblue': hsl(190deg, 50%, 50%), 'darkblue-hover': hsl(200deg, 40%, 60%), 'lightblue-hover': hsl(190deg, 50%, 60%));
 
-.reg .fieldset{
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 35px;
-	font-family: arial;
-	position: relative;
-	color: grey;
-}
+// .wrapper{
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	width: 100vw;
+// 	height: 100vh;
+// }
 
-input{
-	border: 0;
-	border-bottom: 1px solid grey;
-	z-index: 2;
-	background: transparent;
-	padding: 5px 0;
-	color: grey;
-	font-size: 20px;
+// .reg{
+// 	display: flex;
+// 	flex-direction: column;
+// 	color: grey;
+// }
+
+// .reg .fieldset{
+// 	display: flex;
+// 	flex-direction: column;
+// 	margin-bottom: 35px;
+// 	font-family: arial;
+// 	position: relative;
+// 	color: grey;
+// }
+
+// input{
+// 	border: 0;
+// 	border-bottom: 1px solid grey;
+// 	z-index: 2;
+// 	background: transparent;
+// 	padding: 5px 0;
+// 	color: grey;
+// 	font-size: 20px;
 	
-// 	move label on top and add blue underline when focusing on inputs
-	&:focus{outline: none;}
+// // 	move label on top and add blue underline when focusing on inputs
+// 	&:focus{outline: none;}
 	
-	&:focus ~ label{
-		top: -20px;
-		font-size: 12px;
-		color: map-get($colors, 'darkblue');
-	}
+// 	&:focus ~ label{
+// 		top: -20px;
+// 		font-size: 12px;
+// 		color: map-get($colors, 'darkblue');
+// 	}
 	
-	&:focus ~ .underline{
-		background: map-get($colors, 'darkblue');
-		width: 100%;
-		left: 0;
-	}
-}
+// 	&:focus ~ .underline{
+// 		background: map-get($colors, 'darkblue');
+// 		width: 100%;
+// 		left: 0;
+// 	}
+// }
 
-.validation{
-	opacity: 0;
-	color: tomato;
-	position: absolute;
-	font-size: 10px;
-	margin-top: 5px;
-	transition: all .2s ease;
-}
+// .validation{
+// 	opacity: 0;
+// 	color: tomato;
+// 	position: absolute;
+// 	font-size: 10px;
+// 	margin-top: 5px;
+// 	transition: all .2s ease;
+// }
 
-.validation--visible{
-	opacity: 1;
-}
+// .validation--visible{
+// 	opacity: 1;
+// }
 
-.underline{
-	background: grey;
-	position: absolute;
-	height: 2px;
-	width: 0;
-	bottom: 0;
-	left: 50%;
-	z-index: 2;
-	transition: all .2s ease;
-}
+// .underline{
+// 	background: grey;
+// 	position: absolute;
+// 	height: 2px;
+// 	width: 0;
+// 	bottom: 0;
+// 	left: 50%;
+// 	z-index: 2;
+// 	transition: all .2s ease;
+// }
 
-label{
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	transition: all 0.2s ease;
-	font-size: 20px;
-}
+// label{
+// 	position: absolute;
+// 	z-index: 1;
+// 	top: 0;
+// 	transition: all 0.2s ease;
+// 	font-size: 20px;
+// }
 
-// if .fieldset has class 'used' then keep the underline blue and label above the input text
-.fieldset.used > label{
-	top: -20px;
-	font-size: 12px;
-	color: map-get($colors, 'darkblue');
-}
+// // if .fieldset has class 'used' then keep the underline blue and label above the input text
+// .fieldset.used > label{
+// 	top: -20px;
+// 	font-size: 12px;
+// 	color: map-get($colors, 'darkblue');
+// }
 
-.fieldset.used > .underline{
-	background: map-get($colors, 'darkblue');
-	width: 100%;
-	left: 0;
-}
+// .fieldset.used > .underline{
+// 	background: map-get($colors, 'darkblue');
+// 	width: 100%;
+// 	left: 0;
+// }
 
-button{
-	border: none;
-	padding: 10px;
-	text-transform: capitalize;
-	border-radius: 3px;
-	color: white;
-	letter-spacing: 1.5px;
-	font-size: 18px;
-	background: linear-gradient(90deg, map-get($colors, 'darkblue'), map-get($colors, 'lightblue'));
-	transition: all .2s ease;
+// button{
+// 	border: none;
+// 	padding: 10px;
+// 	text-transform: capitalize;
+// 	border-radius: 3px;
+// 	color: white;
+// 	letter-spacing: 1.5px;
+// 	font-size: 18px;
+// 	background: linear-gradient(90deg, map-get($colors, 'darkblue'), map-get($colors, 'lightblue'));
+// 	transition: all .2s ease;
 	
-	&:hover{
-		cursor: pointer;
-		background: linear-gradient(90deg, map-get($colors, 'darkblue-hover'), map-get($colors, 'lightblue-hover'));
-	}
-}
+// 	&:hover{
+// 		cursor: pointer;
+// 		background: linear-gradient(90deg, map-get($colors, 'darkblue-hover'), map-get($colors, 'lightblue-hover'));
+// 	}
+// }
