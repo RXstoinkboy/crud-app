@@ -31,7 +31,7 @@
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.1",
     "pg": "^7.11.0",
-    "pug": "^2.0.4"
+    "pug": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
